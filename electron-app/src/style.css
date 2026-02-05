@@ -1,0 +1,49 @@
+/* Reset some default margins */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Center everything on the page */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Style the headings */
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #666;
+    text-align: center;
+
+}
+
+/* Center the circle displays horizontally */
+.circle-displays {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.stats-display{
+    display: flex;
+    gap: 50px;
+    margin-top: 30px;
+}
+svg {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}

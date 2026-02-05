@@ -1,32 +1,35 @@
-# Prerequisites
-*.d
+# Node modules
+node_modules/
+native/node_modules/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# Build outputs
+dist/
+native/build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript cache
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+
+# Native addon generated files
 *.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
+*.o
+*.pdb
+*.exe
+*.dll
+*.lib
 *.so
 *.dylib
-*.dll
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Optional: ignore package-lock if you don't want to track
+# package-lock.json
