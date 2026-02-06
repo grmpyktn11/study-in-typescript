@@ -492,15 +492,15 @@
     "python": "C:\\Users\\ih841\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
     "standalone_static_library": 1,
     "msbuild_path": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe",
-    "cache": "C:\\Users\\ih841\\AppData\\Local\\npm-cache",
-    "globalconfig": "C:\\Users\\ih841\\AppData\\Roaming\\npm\\etc\\npmrc",
-    "global_prefix": "C:\\Users\\ih841\\AppData\\Roaming\\npm",
-    "init_module": "C:\\Users\\ih841\\.npm-init.js",
-    "local_prefix": "C:\\Users\\ih841\\OneDrive\\Documents\\GitHub\\study-in-typescript\\electron-app\\native",
-    "node_gyp": "C:\\Users\\ih841\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
-    "npm_version": "11.8.0",
-    "prefix": "C:\\Users\\ih841\\AppData\\Roaming\\npm",
+    "user_agent": "npm/11.8.0 node/v22.15.0 win32 x64 workspaces/false",
     "userconfig": "C:\\Users\\ih841\\.npmrc",
-    "user_agent": "npm/11.8.0 node/v22.15.0 win32 x64 workspaces/false"
+    "prefix": "C:\\Users\\ih841\\AppData\\Roaming\\npm",
+    "npm_version": "11.8.0",
+    "node_gyp": "C:\\Users\\ih841\\AppData\\Roaming\\npm\\node_modules\\npm\\node_modules\\node-gyp\\bin\\node-gyp.js",
+    "local_prefix": "C:\\Users\\ih841\\OneDrive\\Documents\\GitHub\\study-in-typescript\\electron-app",
+    "init_module": "C:\\Users\\ih841\\.npm-init.js",
+    "global_prefix": "C:\\Users\\ih841\\AppData\\Roaming\\npm",
+    "globalconfig": "C:\\Users\\ih841\\AppData\\Roaming\\npm\\etc\\npmrc",
+    "cache": "C:\\Users\\ih841\\AppData\\Local\\npm-cache"
   }
 }
