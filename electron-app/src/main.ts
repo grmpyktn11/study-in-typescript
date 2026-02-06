@@ -1,10 +1,10 @@
 import { app, BrowserWindow } from 'electron';
 import path from 'node:path';
 
-function createWindow() {
+
+function createWindow(): void {
     const mainWindow = new BrowserWindow({
-        width: 400,
-        height: 600,
+        fullscreen:true,
         webPreferences:{
             nodeIntegration: true,
             contextIsolation: false
@@ -26,3 +26,4 @@ app.whenReady().then(() => {
     })
 }
 )
+
