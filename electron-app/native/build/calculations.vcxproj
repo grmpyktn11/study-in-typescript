@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3E93DEBD-E237-CC2E-BD7C-129661274CAD}</ProjectGuid>
+    <ProjectGuid>{3C579C4A-6D00-66E3-AFFF-352C0E718BD7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>hello</RootNamespace>
+    <RootNamespace>calculations</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
     <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
@@ -48,19 +48,19 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\native\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus -std:c++20 /Zm2000 %(AdditionalOptions)</AdditionalOptions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4351;4355;4800;4251;4275;4244;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>false</ExceptionHandling>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OmitFramePointers>false</OmitFramePointers>
       <Optimization>Disabled</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=hello;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=calculations;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;DEBUG;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <StringPooling>true</StringPooling>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -72,7 +72,7 @@
       <AdditionalOptions>/LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;delayimp.lib;&quot;C:\\Users\\ih841\\AppData\\Local\\node-gyp\\Cache\\22.15.0\\x64\\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\ih841\\AppData\\Local\\node-gyp\\Cache\\22.15.0\\x64\\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/LTCG:INCREMENTAL /ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <DelayLoadDLLs>node.exe;%(DelayLoadDLLs)</DelayLoadDLLs>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -84,18 +84,18 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=hello;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;DEBUG;_DEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\native\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=calculations;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;DEBUG;_DEBUG;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\native\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus -std:c++20 /Zm2000 %(AdditionalOptions)</AdditionalOptions>
       <BufferSecurityCheck>true</BufferSecurityCheck>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
       <DisableSpecificWarnings>4351;4355;4800;4251;4275;4244;4267;%(DisableSpecificWarnings)</DisableSpecificWarnings>
-      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExceptionHandling>false</ExceptionHandling>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
@@ -104,7 +104,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <Optimization>Full</Optimization>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=hello;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=calculations;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <StringPooling>true</StringPooling>
@@ -117,7 +117,7 @@
       <AdditionalOptions>/LTCG:INCREMENTAL %(AdditionalOptions)</AdditionalOptions>
     </Lib>
     <Link>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;delayimp.lib;&quot;C:\\Users\\ih841\\AppData\\Local\\node-gyp\\Cache\\22.15.0\\x64\\node.lib&quot;</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;DelayImp.lib;&quot;C:\\Users\\ih841\\AppData\\Local\\node-gyp\\Cache\\22.15.0\\x64\\node.lib&quot;</AdditionalDependencies>
       <AdditionalOptions>/LTCG:INCREMENTAL /ignore:4199 %(AdditionalOptions)</AdditionalOptions>
       <DelayLoadDLLs>node.exe;%(DelayLoadDLLs)</DelayLoadDLLs>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -129,22 +129,22 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=hello;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\include\node;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\src;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\config;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\openssl\openssl\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\uv\include;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\zlib;C:\Users\ih841\AppData\Local\node-gyp\Cache\22.15.0\deps\v8\include;C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\native\node_modules\node-addon-api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NODE_GYP_MODULE_NAME=calculations;USING_UV_SHARED=1;USING_V8_SHARED=1;V8_DEPRECATION_WARNINGS=1;_GLIBCXX_USE_CXX11_ABI=1;WIN32;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_HAS_EXCEPTIONS=0;NOMINMAX;OPENSSL_NO_PINSHARED;OPENSSL_THREADS;NAPI_DISABLE_CPP_EXCEPTIONS;BUILDING_NODE_EXTENSION;HOST_BINARY=&quot;node.exe&quot;;%(PreprocessorDefinitions);%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="..\binding.gyp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\hello.cpp">
-      <ObjectFileName>$(IntDir)\hello.obj</ObjectFileName>
+    <ClCompile Include="..\calculations.cpp">
+      <ObjectFileName>$(IntDir)\calculations.obj</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
+    <ClCompile Include="C:\Users\ih841\OneDrive\Documents\GitHub\study-in-typescript\electron-app\native\node_modules\node-gyp\src\win_delay_load_hook.cc"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="node_modules\node-addon-api\nothing.vcxproj">
-      <Project>{9E4FEA06-F2C2-71A0-7A80-6280D54AE70E}</Project>
+      <Project>{626DBC3B-94EA-C5F0-2017-500683BEE714}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
