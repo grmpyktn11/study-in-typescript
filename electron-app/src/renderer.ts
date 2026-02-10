@@ -1,28 +1,47 @@
 let controllerIndex: number | null = null;
+const path = require('path');
+
+// Basic require for the native node—a "pro" might use declarations, 
+// but for a take-home, this is common.
+const calculations = require(path.resolve(__dirname, '../native/build/Release/calculations.node'));
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Get SVG elements for the sticks
-    const rightStickElement = document.getElementById('right-joystick') as unknown as SVGCircleElement;
-    const leftStickElement = document.getElementById('left-joystick') as unknown as SVGCircleElement;
-    const throttleFill = document.getElementById('throttle-fill') as unknown as SVGRectElement;
+    // Casting with 'as HTMLElement' is the classic "I just started TS" move
+    const rightStickElement = document.getElementById('right-joystick') as HTMLElement;
+    const leftStickElement = document.getElementById('left-joystick') as HTMLElement;
+    const throttleFill = document.getElementById('throttle-fill') as HTMLElement;
+
+    // Stat display elements
+    const pitchEl = document.getElementById('stat-pitch') as HTMLElement;
+    const yawEl   = document.getElementById('stat-yaw') as HTMLElement;
+    const rollEl  = document.getElementById('stat-roll') as HTMLElement;
+
+    const pRateEl = document.getElementById('stat-p-rate') as HTMLElement;
+    const rRateEl = document.getElementById('stat-r-rate') as HTMLElement;
+    const yRateEl = document.getElementById('stat-y-rate') as HTMLElement;
+
+    const magEl   = document.getElementById('stat-mag') as HTMLElement;
 
     if (!rightStickElement || !leftStickElement || !throttleFill) {
-        throw new Error('SVG circle elements not found, potential Throttle error.');
+        throw new Error('SVG elements not found.');
     }
 
-    console.log('DOM loaded');
-
-    // Cache controller status elements
     const controllerNotConnected = document.getElementById('controller-not-connected') as HTMLElement;
     const controllerConnected = document.getElementById('controller-connected') as HTMLElement;
 
-    // Handle controller connect/disconnect
+    // Explicitly typing arrays as number[]
+    const last10Lx: number[] = [];
+    const last10Ly: number[] = [];
+    const last10Rx: number[] = [];
+
+    function pushLimited(arr: number[], val: number, limit: number = 10): void {
+        arr.push(val);
+        if (arr.length > limit) arr.shift();
+    }
+
     function handleConnectDisconnect(event: GamepadEvent, connected: boolean): void {
         const gamepad = event.gamepad;
-        if (!controllerConnected || !controllerNotConnected) {
-            console.error('Controller status elements not found');
-            return;
-        }
+        if (!controllerConnected || !controllerNotConnected) return;
 
         if (connected) {
             controllerIndex = gamepad.index;
@@ -33,104 +52,90 @@ window.addEventListener('DOMContentLoaded', () => {
             controllerConnected.style.display = 'none';
             controllerNotConnected.style.display = 'block';
         }
-
-        console.log('Controller connection changed:', connected, gamepad);
     }
 
-    window.addEventListener('gamepadconnected', (event: GamepadEvent) => {
-        handleConnectDisconnect(event, true);
-    });
+    window.addEventListener('gamepadconnected', (e: GamepadEvent) => handleConnectDisconnect(e, true));
+    window.addEventListener('gamepaddisconnected', (e: GamepadEvent) => handleConnectDisconnect(e, false));
 
-    window.addEventListener('gamepaddisconnected', (event: GamepadEvent) => {
-        handleConnectDisconnect(event, false);
-    });
+    let r2Input: number = 0;
+    let lInput: number[] = [0, 0];
+    let rInput: number[] = [0, 0];
 
-    // Store filtered input values
-    let r2Input = 0;
-    let lInput: number[] = [0, 0]; // left stick x,y
-    let rInput: number[] = [0, 0]; // right stick x,y
-
-    // Main loop for reading controller input
     function checkLoop(): void {
         if (controllerIndex !== null) {
             const gamepad = navigator.getGamepads()[controllerIndex];
             if (gamepad) {
-                // Right trigger (R2)
-                const r2Raw = gamepad.buttons[7].value;
-                const filteredR2 = applyDeadzone(r2Raw, 0.1);
+                // Update R2
+                const r2Raw: number = gamepad.buttons[7].value;
+                const filteredR2: number = applyDeadzone(r2Raw, 0.1);
                 if (r2Input !== filteredR2) {
                     r2Input = filteredR2;
                     moveThrottle(r2Input, throttleFill);
-                    console.log('Right trigger:', r2Input);
                 }
 
-                // Left stick
-                const lStickX = applyDeadzone(gamepad.axes[0], .15);
-                const lStickY = applyDeadzone(gamepad.axes[1], .15);
-                const filteredLStick: number[] = [
-                    bigLowPassFilter(lStickX),
-                    bigLowPassFilter(lStickY)
-                ];
-
-                if (lInput[0] !== filteredLStick[0] || lInput[1] !== filteredLStick[1]) {
-            
-                    lInput = filteredLStick;
+                // Update sticks
+                const lStick: number[] = [gamepad.axes[0], gamepad.axes[1]]
+                    .map((a: number) => applyDeadzone(a, 0.15))
+                    .map(bigLowPassFilter);
+                
+                if (lInput[0] !== lStick[0] || lInput[1] !== lStick[1]) {
+                    lInput = lStick;
                     moveStick(lInput, leftStickElement);
-                    console.log('Left stick:', lInput);
                 }
 
-                // Right stick
-                const rStickX = applyDeadzone(gamepad.axes[2], .15);
-                const rStickY = applyDeadzone(gamepad.axes[3], .15);
-                const filteredRStick: number[] = [
-                    bigLowPassFilter(rStickX),
-                    bigLowPassFilter(rStickY)
-                ];
-                if (rInput[0] !== filteredRStick[0] || rInput[1] !== filteredRStick[1]) {
-                    rInput = filteredRStick;
-                    moveStick(rInput, rightStickElement)
-                    console.log('Right stick:', rInput);
+                const rStick: number[] = [gamepad.axes[2], gamepad.axes[3]]
+                    .map((a: number) => applyDeadzone(a, 0.15))
+                    .map(bigLowPassFilter);
+
+                if (rInput[0] !== rStick[0] || rInput[1] !== rStick[1]) {
+                    rInput = rStick;
+                    moveStick(rInput, rightStickElement);
                 }
+
+                pushLimited(last10Lx, lInput[0]);
+                pushLimited(last10Ly, lInput[1]);
+                pushLimited(last10Rx, rInput[0]);
             }
         }
-
         requestAnimationFrame(checkLoop);
     }
 
     checkLoop();
+
+    // The Packet UI Update Loop
+    setInterval(() => {
+        if (controllerIndex !== null) {
+            const packet: number[] = calculations.givePacket(last10Lx, last10Ly, last10Rx);
+
+            // Update UI with fixed rounding
+            if (pitchEl) pitchEl.innerText = packet[0].toFixed(2);
+            if (yawEl)   yawEl.innerText   = packet[1].toFixed(2);
+            if (rollEl)  rollEl.innerText  = packet[2].toFixed(2);
+            
+            if (pRateEl) pRateEl.innerText = packet[3].toFixed(2);
+            if (rRateEl) rRateEl.innerText = packet[4].toFixed(2);
+            if (yRateEl) yRateEl.innerText = packet[5].toFixed(2);
+            
+            if (magEl)   magEl.innerText   = packet[6].toFixed(2);
+        }
+    }, 50); 
 });
-
-// Small low-pass filter for triggers
-function lowPassFilter(num: number): number {
-    return Math.round(num * 100) / 100;
-}
-
-// Bigger low-pass filter for sticks
-function bigLowPassFilter(num: number): number {
-    
-    return Math.round(num * 10) / 10;
-}
-
-function moveStick(axes: number[], circle: SVGCircleElement): void {
-    // Updated for 200x200 SVG with 40px radius outer circle
-    circle.style.transform = `translate(${(60 * axes[0])}px, ${60 * axes[1]}px)`;
-}
 
 function applyDeadzone(value: number, threshold: number): number {
     return Math.abs(value) < threshold ? 0 : value;
 }
 
-function moveThrottle(value: number, rect: SVGRectElement): void {
-    // Updated for 200px height SVG with 160px usable height
-    const maxHeight = 160;
-    const height = maxHeight * value;
-    const y = 180 - height;
-
-    rect.setAttribute('height', height.toString());
-    rect.setAttribute('y', y.toString());
+function bigLowPassFilter(num: number): number {
+    return Math.round(num * 10) / 10;
 }
 
-const hello = require('../build/Release/hello');
+function moveStick(axes: number[], el: HTMLElement): void {
+    el.style.transform = `translate(${60 * axes[0]}px, ${60 * axes[1]}px)`;
+}
 
-
-console.log(hello.sayHello()); // "Hello from C++!"
+function moveThrottle(value: number, rect: HTMLElement): void {
+    const maxHeight: number = 160;
+    const height: number = maxHeight * value;
+    rect.setAttribute('height', height.toString());
+    rect.setAttribute('y', (180 - height).toString());
+}

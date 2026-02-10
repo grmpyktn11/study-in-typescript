@@ -1,38 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>title here lol</title>
+    <meta charset="UTF-8">
+    <title>F-15 FLIGHT DISPLAY</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Flight Sim</h1>
-    <div id="controller-not-connected" class="controller-status">
-        <div>controller not connected. press a button to start</div>
-    </div>
-    <div id="controller-connected" class="controller-status">
-        <div>controller connected</div>
-    </div>
-    
-    <div class="stats-display">
-        <p>Stat 1</p>
-        <p>Stat 2</p>
-        <p>Stat 3</p>
-        <p>Stat 4</p>
+    <div class="hud-frame">
+        <div class="top-bar">
+            <div id="controller-not-connected" class="status warn">INPUT DEVICE NOT DETECTED</div>
+            <div id="controller-connected" class="status ok">INPUT DEVICE ONLINE</div>
+        </div>
+
+        <div class="layout">
+            <div class="left-panel">
+                <h2>FLIGHT CONTROL SYSTEM</h2>
+                <div class="stats-display">
+                    <p><span>PITCH</span><span id="stat-pitch">+0.00</span><span>DEG</span></p>
+                    <p><span>ROLL</span><span id="stat-roll">+0.00</span><span>DEG</span></p>
+                    <p><span>YAW</span><span id="stat-yaw">+0.00</span><span>DEG</span></p>
+                </div>
+
+                <h2>ANGULAR RATES</h2>
+                <div class="stats-display">
+                    <p><span>P RATE</span><span id="stat-p-rate">+0.00</span><span>DEG/SEC</span></p>
+                    <p><span>R RATE</span><span id="stat-r-rate">+0.00</span><span>DEG/SEC</span></p>
+                    <p><span>Y RATE</span><span id="stat-y-rate">+0.00</span><span>DEG/SEC</span></p>
+                </div>
+
+                <h2>INPUT MAGNITUDE</h2>
+                <div class="stats-display">
+                    <p><span>STICK</span><span id="stat-mag">0.00</span><span>UNIT</span></p>
+                </div>
+            </div>
+
+            <div class="center-panel">
+                <h2>CONTROL INPUTS</h2>
+                <div class="circle-displays">
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="38" />
+                        <circle id="left-joystick" cx="100" cy="100" r="3" />
+                    </svg>
+
+                    <svg width="200" height="200">
+                        <circle cx="100" cy="100" r="38" />
+                        <circle id="right-joystick" cx="100" cy="100" r="3" />
+                    </svg>
+
+                    <svg width="60" height="200">
+                        <rect x="29" y="20" width="2" height="160" />
+                        <rect id="throttle-fill" x="26" y="180" width="8" height="0" />
+                    </svg>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <h2>Sticks Display</h2>
-    <div class="circle-displays">
-        <svg height="200" width="200" id="left-circle">
-            <circle cx="100" cy="100" r="40" fill="black" />
-            <circle id="left-joystick" cx="100" cy="100" r="36" fill="red" />
-        </svg>
-        <svg height="200" width="200" id="right-circle">
-            <circle cx="100" cy="100" r="40" fill="black" />
-            <circle id='right-joystick' cx="100" cy="100" r="36" fill="red" />
-        </svg>
-        <svg height="200" width="60" id="throttle-display">
-            <rect x="20" y="20" width="20" height="160" fill="black" />
-            <rect id="throttle-fill" x="20" y="180" width="20" height="0" fill="green" />
-        </svg>
-    </div>
-
-    <script src="./renderer.js"></script>
+    <script src="renderer.js"></script>
 </body>
+</html>
