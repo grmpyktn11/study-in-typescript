@@ -6,9 +6,7 @@
     "postinstall": "cd native && npm install && npx node-gyp rebuild",
     "build": "tsc && copyfiles -u 1 src/**/*.html dist && copyfiles -u 1 src/**/*.css dist",
     "build:native": "cd native && npx node-gyp rebuild",
-    "watch": "tsc --watch",
     "start": "npm run build && electron .",
-    "dev": "npm run build && electron .",
     "clean": "rm -rf dist"
   },
   "keywords": [],
