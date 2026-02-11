@@ -1,8 +1,3 @@
-/*
-
-*/
-
-
 #include <napi.h>
 #include <queue>
 #include <vector>
