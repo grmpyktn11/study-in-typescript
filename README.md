@@ -1,5 +1,7 @@
 # Flight Control Simulator
 
+<img width="1902" height="1079" alt="image" src="https://github.com/user-attachments/assets/6a7837c3-b4f6-46ac-bc85-c8639eec14d7" />
+
 Real-time flight control simulation using gamepad input with C++ native calculations.
 
 ## Setup
